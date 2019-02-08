@@ -1,5 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
+
+import QuoteBox from './QuoteBox';
 
 const quotes = [
 
@@ -48,26 +50,31 @@ const quotes = [
 
 class App extends Component {
 
+
+
 state = {
-  quote: {
-  }
+  quoteObj: quotes[Math.floor(Math.random() * quotes.length)]
 }
 
 
 getRandomQuote = (quotesArr) => {
  const randomQuote = quotesArr[Math.floor(Math.random() * quotesArr.length)];
- return randomQuote;
+ this.setState({
+   quoteObj: randomQuote
+ });
 };
 
 render() {
-  return (
-    <div className="container">
-      <div id="quote-box">
-      <p className="quote">You can do anything but not everything</p>
-     <p className="source">David Allen<span className="citation">Making It All Work</span><span className="year">2009</span></p>
 
-      </div>
-      <button onClick={()=>this.getRandomQuote(quotes)} id="loadQuote">Show another quote</button>
+const bgColor = {
+  backgroundColor: "red"
+}
+
+
+  return (
+    <div className="container" >
+      <QuoteBox quote={this.state.quoteObj} />
+        <button onClick={()=>this.getRandomQuote(quotes)} id="loadQuote">Show another quote</button>
     </div>
   );
 };
