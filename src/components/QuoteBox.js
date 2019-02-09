@@ -1,6 +1,6 @@
 import React from 'react';
 
-const QuoteBox = ({quote}) => {
+const QuoteBox = ({ quote }) => {
   return (
     <div id="quote-box">
       <p className="quote">{quote.quote}</p>
