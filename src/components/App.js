@@ -50,25 +50,26 @@ const quotes = [
 
 class App extends Component {
 
-
-
 state = {
   quoteObj: quotes[Math.floor(Math.random() * quotes.length)]
 }
 
 
-getRandomQuote = (quotesArr) => {
+getRandomQuote = quotesArr => {
  const randomQuote = quotesArr[Math.floor(Math.random() * quotesArr.length)];
  this.setState({
    quoteObj: randomQuote
  });
+ this.changeBackground();
 };
 
-render() {
+getRandomNumber = () => Math.floor(Math.random() * 255);
 
-const bgColor = {
-  backgroundColor: "red"
+changeBackground = () => {
+  document.body.style.backgroundColor = `rgb(${this.getRandomNumber()},${this.getRandomNumber()},${this.getRandomNumber()})`;
 }
+
+render() {
 
 
   return (
