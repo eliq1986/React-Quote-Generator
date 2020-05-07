@@ -1,63 +1,21 @@
 import { combineReducers } from 'redux';
+import { quotes } from '../data';
 
-
-const quotes = [
-
-  {
-    quote: "Is Butter a carb",
-    source: "Regina George",
-    year: 2004,
-    citation: "Mean Girls"
-
-
-  }, {
-    quote: `To see the world, things dangerous to come to, to see behind walls, draw closer, to find each other, and to feel. That is the purpose of life`,
-    source: "Walter Mitty",
-    year: 2013,
-    citation: "The Secret Life Of Walter Mitty"
-
-
-  }, {
-    quote: `What we do in life echoes in eternity.`,
-    source: "Maximus",
-    year: 2000,
-    citation: "Gladiator"
-
-
-  }, {
-    quote: `Kid, there are heroes and there are legends. Heroes get remembered, but legends never die. Follow your heart, kid, and you’ll never go wrong.`,
-    source: "Babe Ruth",
-    year: 1993,
-    citation: "The Sandlot"
-
-
-  }, {
-    quote: `Do, or do not. There is no “try`,
-    source: "Yoda",
-    year: 1980,
-    citation: "Empire Strikes Back"
-
-
-  }, {
-    quote: `Who is your daddy and what does he do`,
-    source: "John Kimble",
-    year: 1990,
-    citation: "Kindergarten Cop"
-  }
-];
 
 
 export const quotesReducer = (state = quotes[0], action) => {
-  if(action.type === "RANDOM_QUOTE") {
-    const randomNumber = [Math.floor(Math.random() * quotes.length)];
-    const randomQuoteObject = quotes[randomNumber];
-    return randomQuoteObject;
-  }
 
-  return state;
+    switch(action.type) {
+      case "RANDOM_QUOTE":
+        const randomNumber = [Math.floor(Math.random() * action.payload.length)];
+        const randomQuoteObject = action.payload[randomNumber];
+        return randomQuoteObject;
+
+      default:
+        return state;
+    }
+
 }
-
-
 
 
 
